@@ -77,6 +77,11 @@ export function storeCommentObject(object) {
   return localStorage.setItem(`comments`, stringifiedObject);
 }
 
+/*---------------------------
+ <-- JESPER ABOVE
+ ATTILA BELOW -->
+------------------------------*/
+
 export function filterComments(comments, id){
   return comments.filter(comment => comment.postId === id);
 }
