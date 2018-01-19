@@ -26,7 +26,7 @@ it('should render <App /> with default Page', () => {
   expect(currentPage).toBe("home");
 });
 
-it('should render <App /> changed Page', () => {
+it('should render <App /> with changed Page', () => {
   const wrapper = shallow(<App />);
   const page = "bot";
   const { currentPage:defaultPage } = wrapper.state();
@@ -36,6 +36,30 @@ it('should render <App /> changed Page', () => {
   expect(currentPage).toBe("bot");
 });
 
-it('should render fetch user and display on page', () => {
+it('should fetch user and display on page', () => {
+  const wrapper = mount(<App />);
+  wrapper.instance().changePersona({target:{"value": "Zak"}});
+  const { currentPersona } = wrapper.state();
+  expect(currentPersona).toBe("Zak");  
+});
 
+it('should change page from home to bot', () => {
+  const wrapper = mount(<App />);
+  const { currentPage:defaultPage } = wrapper.state();
+  expect(defaultPage).toBe("home"); 
+  wrapper.instance().changePage();
+  const { currentPage } = wrapper.state();
+  expect(currentPage).toBe("bot");  
+});
+
+it('should change page from bot to home', () => {
+  const wrapper = mount(<App />);
+  const { currentPage:defaultPage } = wrapper.state();
+  expect(defaultPage).toBe("home"); 
+  wrapper.instance().changePage();
+  const { currentPage } = wrapper.state();
+  expect(currentPage).toBe("bot");  
+  wrapper.instance().changePage();
+  const { currentPage:changedBackPage } = wrapper.state();
+  expect(changedBackPage).toBe("home");    
 });
