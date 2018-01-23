@@ -24,3 +24,23 @@ const localStorageMock = (() => {
 });
 
 global.localStorage = localStorageMock();
+
+/** LOCAL STORAGE MOCK UTILS */
+
+function postMockComment(){
+  const mockComment = JSON.stringify(
+    [
+      {
+        comment: 'Comment',
+        id: '1',
+        postId: '1',
+        author: 'testAuthor',
+        date: '2018-1-23 14:44:38'
+      }
+    ]
+  );
+  
+  localStorage.setItem('comments', mockComment);
+}
+
+export default postMockComment;
