@@ -1,7 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import CreateNewPost from '../components/CreateNewPost';
-// import {postMockPost} from '../setupTests';
 
 describe('input onchange tests', ()=> {
   const wrapper = mount(<CreateNewPost author="testAuthor" updatePosts={jest.fn()} />);
