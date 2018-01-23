@@ -16,7 +16,14 @@ describe('SingleComment unit tests', ()=> {
     const onClick = jest.fn();
     const comment = api.createCommentObject('testcomment', 123, 'Attila');
     const wrapper = mount(<SingleComment  {...comment} onClick={onClick} currentPersona="Attila" />);
-    // console.log(wrapper.find('[data-test="button"]'));
     expect(wrapper.find('[data-test="button"]')).toHaveLength(1);
   });    
+
+  it('should trigger click', () => {
+    const onClick = jest.fn();
+    const comment = api.createCommentObject('testcomment', 123, 'Attila');
+    const wrapper = mount(<SingleComment  {...comment} onClick={onClick} currentPersona="Attila" />);
+    wrapper.find('[data-test="button"]').simulate('click');
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });  
 });  
