@@ -1,7 +1,21 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Posts from '../components/Posts';
-import {postMockPost} from '../setupTests';
+
+function postMockPost(){
+  const mockPost = JSON.stringify(
+    [
+      { 
+        id: '1', 
+        title: 'testTitle',
+        content: 'testContent',
+        author: 'testAuthor',
+        date: '2018-1-23 14:44:38'
+      },
+    ]);
+  localStorage.setItem('posts', mockPost);
+  }
+  
 
 beforeEach(() => {
   postMockPost();
