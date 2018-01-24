@@ -1,5 +1,61 @@
 import * as api from '../../api';
 
+describe('jesper api tests', ()=> {
+
+  afterEach(() => {
+    localStorage.clear();
+  });
+
+  const mockPost = [{ 
+    id: '1', 
+    title: 'testTitle',
+    content: 'testContent',
+    author: 'testAuthor',
+    date: '2018-1-23 14:44:38'
+  }];
+
+  it('should return a 10 char string', ()=> {
+    expect(typeof api.generateID()).toEqual('string');
+    expect(api.generateID()).toHaveLength(10);
+  });
+
+  it('should return a correctly formatted object', ()=>{
+    expect(typeof api.createPostObject()).toEqual('object');
+    expect(Object.keys(api.createPostObject())).toEqual([ 'title', 'content', 'id', 'author', 'date' ]);
+    const testObj = api.createPostObject('testTitle');
+    expect(testObj.title).toEqual('testTitle');
+  });
+
+  it.skip('expect createPostObject to fail', ()=> {
+    api.createPostObject(jest.fn, jest.fn)
+  })
+
+  it('should return a post from localStorage', ()=> {
+      localStorage.setItem('posts', JSON.stringify(mockPost));
+      expect(api.fetchAllPosts()).toEqual(mockPost);
+  });
+
+  it('should return an empty array when no localstorage posts', ()=> {
+    expect(api.fetchAllPosts()).toEqual([]);
+  })
+
+  it('should localstore a post object', ()=> {
+    api.storePostObject(mockPost);
+    expect(localStorage.getItem('posts')).toEqual(JSON.stringify(mockPost));
+  });
+
+  it('should remove my post from localstorage', ()=>{
+    localStorage.setItem('posts', JSON.stringify(mockPost));
+    api.removePost('1')
+    expect(localStorage.getItem('posts')).toEqual('[]');
+  });
+
+  // fetchAllCommments
+  // createCommentObject
+  // storeCommentObject
+
+});
+
 describe('api tests', ()=> {
 
   jest.useFakeTimers();
