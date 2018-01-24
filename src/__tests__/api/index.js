@@ -51,4 +51,16 @@ describe('api tests', ()=> {
     expect(api.fetchPersonas()).toHaveLength(0);
   });   
 
+  it('shoul return personas from localStorage', () => {
+    const personasInLocalStorage = localStorage.getItem('personas');
+    const personas = [
+       {'name': 'Zak'},
+       {'name': 'Esmeralda'}
+      ];
+    if(!personasInLocalStorage){
+      localStorage.setItem('personas', JSON.stringify(personas));
+    }
+    expect(api.fetchPersonas()).toHaveLength(2);
+  });
+
 });
