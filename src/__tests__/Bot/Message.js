@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Message from '../components/Bot/Message';
+import Message from '../../components/Bot/Message';
 
 describe('Message unit tests', ()=> {
 

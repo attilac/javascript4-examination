@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import MessageForm from '../components/Bot/MessageForm';
+import MessageForm from '../../components/Bot/MessageForm';
 
 describe('MessageForm unit tests', ()=> {
 
