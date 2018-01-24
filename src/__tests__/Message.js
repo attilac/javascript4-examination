@@ -10,7 +10,7 @@ describe('Message unit tests', ()=> {
   });  
 
   it('should render message from bot with correct class', () => {
-    const wrapper = mount(<Message bot={true} message="testmessage" />);
+    const wrapper = mount(<Message bot message="testmessage" />);
     expect(wrapper.find('p.bg-white')).toHaveLength(1); 
   });    
 
