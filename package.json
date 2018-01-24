@@ -33,9 +33,8 @@
     ],
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
-      "!<rootdir>/src/setupTests.js",
-      "!<rootdir>/src/fakePosts.js",
-      "!<rootdir>/src/registerServiceWorker.js"
+      "!src/fakePosts.js",
+      "!src/registerServiceWorker.js"
     ]
   }
 }
