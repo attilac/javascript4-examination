@@ -1,0 +1,206 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`singlepost unit tests should match snapshots 1`] = `
+<SinglePost
+  author="testAuthor"
+  content="testContent"
+  currentPersona="testAuthor"
+  date="2018-1-23 14:44:38"
+  id="1"
+  onClick={[Function]}
+  title="testTitle"
+>
+  <div
+    className="w-full shadow p-6 m-6 border rounded relative"
+  >
+    <article
+      className="mb-2"
+    >
+      <Button
+        className="absolute pin-t pin-r mx-4 my-6"
+        danger={true}
+        onClick={[Function]}
+      >
+        <button
+          className="bg-red-dark hover:bg-red-darker text-white font-bold py-2 px-4 rounded-full absolute pin-t pin-r mx-4 my-6"
+          data-test="button"
+          onClick={[Function]}
+        >
+          x
+        </button>
+      </Button>
+      <h2
+        className="mb-4 w-4/5"
+      >
+        testTitle
+      </h2>
+      <ReactMarkdown
+        className="mb-4 text-grey-darkest markdown"
+        escapeHtml={true}
+        renderers={Object {}}
+        skipHtml={false}
+        source="testContent"
+        transformLinkUri={[Function]}
+      >
+        <div
+          className="mb-4 text-grey-darkest markdown"
+          key="root-1-1"
+        >
+          <p
+            key="paragraph-1-1"
+          >
+            testContent
+          </p>
+        </div>
+      </ReactMarkdown>
+      <p
+        className="text-grey-dark mb-4"
+      >
+        Posted by: 
+        testAuthor
+         @ 
+        2018-1-23 14:44:38
+      </p>
+    </article>
+    <Comments
+      currentPersona="testAuthor"
+      postId="1"
+    >
+      <div
+        className="py-2"
+      >
+        <h2
+          className="text-indigo-darker border-b mb-4"
+        >
+          Comments
+        </h2>
+        <CreateNewComment
+          author="testAuthor"
+          postId="1"
+          updateComments={[Function]}
+        >
+          <form
+            className="container mx-auto flex flex-col p-6"
+            onSubmit={[Function]}
+          >
+            <label
+              className="mb-2"
+              htmlFor="comment"
+            >
+              Comment
+            </label>
+            <textarea
+              className="shadow rounded border mb-2 p-2"
+              id="comment"
+              name="comment"
+              onChange={[Function]}
+              value=""
+            />
+            <input
+              className="bg-indigo-dark hover:bg-indigo-darker text-white font-bold py-2 px-4 rounded-full"
+              type="submit"
+              value="Comment"
+            />
+          </form>
+        </CreateNewComment>
+      </div>
+    </Comments>
+  </div>
+</SinglePost>
+`;
+
+exports[`singlepost unit tests should match snapshots 2`] = `
+<SinglePost
+  author="testAuthor"
+  content="testContent"
+  currentPersona="anotherPersona"
+  date="2018-1-23 14:44:38"
+  id="1"
+  onClick={[Function]}
+  title="testTitle"
+>
+  <div
+    className="w-full shadow p-6 m-6 border rounded relative"
+  >
+    <article
+      className="mb-2"
+    >
+      <h2
+        className="mb-4 w-4/5"
+      >
+        testTitle
+      </h2>
+      <ReactMarkdown
+        className="mb-4 text-grey-darkest markdown"
+        escapeHtml={true}
+        renderers={Object {}}
+        skipHtml={false}
+        source="testContent"
+        transformLinkUri={[Function]}
+      >
+        <div
+          className="mb-4 text-grey-darkest markdown"
+          key="root-1-1"
+        >
+          <p
+            key="paragraph-1-1"
+          >
+            testContent
+          </p>
+        </div>
+      </ReactMarkdown>
+      <p
+        className="text-grey-dark mb-4"
+      >
+        Posted by: 
+        testAuthor
+         @ 
+        2018-1-23 14:44:38
+      </p>
+    </article>
+    <Comments
+      currentPersona="anotherPersona"
+      postId="1"
+    >
+      <div
+        className="py-2"
+      >
+        <h2
+          className="text-indigo-darker border-b mb-4"
+        >
+          Comments
+        </h2>
+        <CreateNewComment
+          author="anotherPersona"
+          postId="1"
+          updateComments={[Function]}
+        >
+          <form
+            className="container mx-auto flex flex-col p-6"
+            onSubmit={[Function]}
+          >
+            <label
+              className="mb-2"
+              htmlFor="comment"
+            >
+              Comment
+            </label>
+            <textarea
+              className="shadow rounded border mb-2 p-2"
+              id="comment"
+              name="comment"
+              onChange={[Function]}
+              value=""
+            />
+            <input
+              className="bg-indigo-dark hover:bg-indigo-darker text-white font-bold py-2 px-4 rounded-full"
+              type="submit"
+              value="Comment"
+            />
+          </form>
+        </CreateNewComment>
+      </div>
+    </Comments>
+  </div>
+</SinglePost>
+`;
