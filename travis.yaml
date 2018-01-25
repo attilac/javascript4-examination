@@ -10,4 +10,4 @@ deploy:
     local-dir: build
     github_token: $GITHUB_TOKEN
     on:
-      branch: attilac  
+      branch: master  
