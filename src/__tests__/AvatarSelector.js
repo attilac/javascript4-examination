@@ -5,19 +5,28 @@ import AvatarSelector from '../components/AvatarSelector';
 describe('avatar selector unit tests', ()=> {
 
   it('should render component with zac image', () => {
-    const wrapper = mount(<AvatarSelector currentPersona="Zac" />);
+    const currentPersona = 'Zac';
+    const wrapper = mount(<AvatarSelector currentPersona={currentPersona} />);
     expect(wrapper.find('img').prop('src')).toBe('zac.png');
   });
 
   it('should render component with esmeralda image', () => {
-    const wrapper = mount(<AvatarSelector currentPersona="Esmeralda" />);
+    const currentPersona = 'Esmeralda';
+    const wrapper = mount(<AvatarSelector currentPersona={currentPersona} />);
     expect(wrapper.find('img').prop('src')).toBe('esmeralda.png');
   });  
 
   it('should render component with morgana image', () => {
-    const wrapper = mount(<AvatarSelector currentPersona="Morgana" />);
+    const currentPersona = 'Morgana';
+    const wrapper = mount(<AvatarSelector currentPersona={currentPersona} />);
     expect(wrapper.find('img').prop('src')).toBe('morgana.png');
-  });  
+  }); 
+
+  it('should render component with default image', () => {
+    const currentPersona = 'NonExistingPersona';
+    const wrapper = mount(<AvatarSelector currentPersona={currentPersona} />);
+    expect(wrapper.find('img').prop('src')).toBe('zac.png');
+  });    
 
 });  
 
