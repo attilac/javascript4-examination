@@ -38,5 +38,6 @@
       "!src/registerServiceWorker.js",
       "!src/setupTests.js"
     ]
-  }
+  },
+  "homepage": "https://attilac.se/javascript4-examination"
 }
