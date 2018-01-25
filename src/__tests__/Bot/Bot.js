@@ -27,26 +27,15 @@ it('should set typing from false to true', ()=> {
   expect(wrapper.state().typing).toBeTruthy();
 });
 
-it.skip('should get a botreply', ()=> {
-  const wrapper = mount(<Bot />);
-  wrapper.setState({message: 'Message', bot: false})
-  wrapper.instance().sendReply();
-    return flushPromises().then(() => {
-      // console.log(wrapper.state());
-      expect(true);
-  });    
-});
 
 it('should get a botreply', () => {
   jest.useFakeTimers();
   const wrapper = mount(<Bot />);
   wrapper.setState({message: 'Message', bot: false});
-  // console.log(wrapper.state());
   expect(wrapper.state().typing).toBe(false);
   wrapper.instance().sendReply();
   const pendingPromise = flushPromises()
     .then(() => {
-      // console.log(wrapper.state());
       expect(wrapper.state().typing).toBe(true);
     });
     jest.runAllTimers();
@@ -54,6 +43,5 @@ it('should get a botreply', () => {
   return pendingPromise
     .then(() => {
       expect(wrapper.state().typing).toBe(false);
-      // console.log(wrapper.state());
     });   
 }); 

@@ -28,9 +28,6 @@ describe('jesper api tests', ()=> {
     expect(testObj.title).toEqual('testTitle');
   });
 
-  it.skip('expect createPostObject to fail', ()=> {
-    api.createPostObject(jest.fn, jest.fn)
-  })
 
   // fetchAllPosts
   it('should return a post from localStorage', ()=> {
@@ -90,6 +87,11 @@ describe('jesper api tests', ()=> {
     api.storeCommentObject(mockComment);
     expect(localStorage.getItem('comments')).toEqual(JSON.stringify(mockComment));
   });
+
+  // filterComments
+  it('should throw error when called without array', ()=> {
+    expect(() => api.filterComments('no array!')).toThrow();
+  }) 
 
 });
 

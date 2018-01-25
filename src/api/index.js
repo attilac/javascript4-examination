@@ -83,12 +83,15 @@ export function storeCommentObject(object) {
 ------------------------------*/
 
 export function filterComments(comments, id){
-  return comments.filter(comment => comment.postId === id);
+  try {
+    return comments.filter(comment => comment.postId === id);
+  } catch(e) {
+    throw new Error(e);
+  }
 }
 
 export function removeComment(commentId) {
   const comments = fetchAllCommments();
-  console.log(comments);
   const filteredComments = comments.filter(comment => comment.id !== commentId);
   storeCommentObject(filteredComments);
 }

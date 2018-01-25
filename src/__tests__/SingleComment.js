@@ -26,4 +26,14 @@ describe('SingleComment unit tests', ()=> {
     wrapper.find('[data-test="button"]').simulate('click');
     expect(onClick).toHaveBeenCalledTimes(1);
   });  
+
+  it.skip('should console errors when no props', ()=> {
+    const warn = jest.spyOn(global.console, 'error');
+    shallow(<SingleComment />)
+    expect(warn).toHaveBeenCalled();
+    warn.mockReset();
+    warn.mockRestore();
+  });
+
 });  
+

@@ -30,10 +30,12 @@ describe('singlepost unit tests', ()=>{
     expect(noBtnWrapper).toMatchSnapshot();
   })
 
-  it.skip('should fail', ()=> {
-    const error = mount(<SinglePost content={jest.fn()} />)
-    console.log(error.html());
-    expect(true);
+  it.skip('should console errors when no props', ()=> {
+    const warn = jest.spyOn(global.console, 'error');
+    mount(<SinglePost />)
+    expect(warn).toHaveBeenCalled();
+    warn.mockReset();
+    warn.mockRestore();
   })
 
 });
