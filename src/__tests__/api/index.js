@@ -154,6 +154,6 @@ describe('api tests', ()=> {
       localStorage.setItem('personas', JSON.stringify(personas));
     }
     expect(api.fetchPersonas()).toHaveLength(2);
-  });
+  });  
 
 });
