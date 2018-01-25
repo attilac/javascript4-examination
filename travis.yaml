@@ -2,4 +2,12 @@ language: node_js
 node_js:
   - 8
 script:
-  - npm test
+  - yarn build
+  - yarn test -- --coverage && cat ./coverage/lcov.info | coveralls  
+deploy:
+    provider: pages
+    skip_cleanup: true
+    local-dir: build
+    github_token: $GITHUB_TOKEN
+    on:
+      branch: attilac  
