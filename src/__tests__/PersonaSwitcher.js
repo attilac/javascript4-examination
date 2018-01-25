@@ -1,10 +1,16 @@
 import React from 'react';
-import { render, mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import PersonaSwitcher from '../components/PersonaSwitcher';
-import App from '../components/App';
 
-test('renders the app', () => {
-  render(<App />);
-});
+describe('PersonaSwitcher unit tests', ()=> {
 
-
+  it('should render component with zac image', () => {
+    const changePersona = jest.fn();
+    let currentPersona = 'Zac';
+    let wrapper = mount(<PersonaSwitcher currentPersona={currentPersona} changePersona={changePersona} />);
+    expect(wrapper.find('select').prop('value')).toBe(currentPersona);
+    currentPersona = 'Esmeralda';
+    wrapper = mount(<PersonaSwitcher currentPersona={currentPersona} changePersona={changePersona} />);
+    expect(wrapper.find('select').prop('value')).toBe(currentPersona);
+  });
+}); 
