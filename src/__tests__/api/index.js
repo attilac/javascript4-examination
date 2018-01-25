@@ -14,12 +14,14 @@ describe('jesper api tests', ()=> {
     date: '2018-1-23 14:44:38'
   }];
 
+  // generateID
   it('should return a 10 char string', ()=> {
     expect(typeof api.generateID()).toEqual('string');
     expect(api.generateID()).toHaveLength(10);
   });
 
-  it('should return a correctly formatted object', ()=>{
+  // createPostObject
+  it('should return a correctly formatted post object', ()=>{
     expect(typeof api.createPostObject()).toEqual('object');
     expect(Object.keys(api.createPostObject())).toEqual([ 'title', 'content', 'id', 'author', 'date' ]);
     const testObj = api.createPostObject('testTitle');
@@ -30,6 +32,7 @@ describe('jesper api tests', ()=> {
     api.createPostObject(jest.fn, jest.fn)
   })
 
+  // fetchAllPosts
   it('should return a post from localStorage', ()=> {
       localStorage.setItem('posts', JSON.stringify(mockPost));
       expect(api.fetchAllPosts()).toEqual(mockPost);
@@ -39,20 +42,54 @@ describe('jesper api tests', ()=> {
     expect(api.fetchAllPosts()).toEqual([]);
   })
 
+  // storePostObject
   it('should localstore a post object', ()=> {
     api.storePostObject(mockPost);
     expect(localStorage.getItem('posts')).toEqual(JSON.stringify(mockPost));
   });
 
+  // removePost
   it('should remove my post from localstorage', ()=>{
     localStorage.setItem('posts', JSON.stringify(mockPost));
     api.removePost('1')
     expect(localStorage.getItem('posts')).toEqual('[]');
   });
 
+  const mockComment = JSON.stringify(
+    [
+      {
+        comment: 'testComment',
+        id: '1',
+        postId: '1',
+        author: 'testAuthor',
+        date: '2018-1-23 14:44:38'
+      }
+    ]
+  );
+
   // fetchAllCommments
+  it('should return a comment from localStorage', ()=> {
+      localStorage.setItem('comments', JSON.stringify(mockComment));
+      expect(api.fetchAllCommments()).toEqual(mockComment);
+  });
+
+  it('should return an empty array when no localstorage comments', ()=> {
+    expect(api.fetchAllCommments()).toEqual([]);
+  })
+
   // createCommentObject
+  it('should return a correctly formatted comment object', ()=>{
+    expect(typeof api.createCommentObject()).toEqual('object');
+    expect(Object.keys(api.createCommentObject())).toEqual(['comment', 'id', 'postId', 'author', 'date']);
+    const testComment = api.createCommentObject('testComment');
+    expect(testComment.comment).toEqual('testComment');
+  });
+
   // storeCommentObject
+  it('should localstore a comment object', ()=> {
+    api.storeCommentObject(mockComment);
+    expect(localStorage.getItem('comments')).toEqual(JSON.stringify(mockComment));
+  });
 
 });
 
