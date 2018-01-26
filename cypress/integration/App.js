@@ -1,5 +1,6 @@
 describe('App.js', () => {
   beforeEach(() => {
+    localStorage.clear();
     cy.visit('http://localhost:3000');
   });
 
@@ -10,14 +11,14 @@ describe('App.js', () => {
 
     it('should display posts', ()=>{
       cy.get('#title')
-      .should('have.length', 1)
+      .should('be.visible')
     })
 
     it('should display bot page', ()=> {
       cy.get('@button')
       .click();
       cy.get('[name="userMessage"]')
-      .should('have.length', 1);
+      .should('be.visible');
     })
 
     it('should go back to posts', ()=> {
@@ -25,7 +26,7 @@ describe('App.js', () => {
       .click()
       .click();
       cy.get('#title')
-      .should('have.length', 1)
+      .should('be.visible')
     })
   })
 
@@ -36,17 +37,40 @@ describe('App.js', () => {
 
   // J
   context('Create post', ()=> {
-
+    it('should render after you post it', ()=> {
+      cy.get('#title')
+      .type('Test title');
+      cy.get('#content')
+      .type('Test content');
+      cy.get('[value="Create"]')
+      .click();
+      cy.get('article:first-of-type')
+        .within(() => 
+        cy.get('h2')
+        .should('contain', 'Test title')
+      );
+    });
   });
 
   // a
   context('Create comment', ()=> {
+    
 
   });
 
   // j
   context('Remove post', ()=> {
-
+    it('should not be visible after you remove it', ()=> {
+      cy.get('#title')
+      .type('Title to be removed');
+      cy.get('#content')
+      .type('Content to be removed');
+      cy.get('[value="Create"]')
+      .click();
+      cy.get('article:first-of-type')
+        .within(() => cy.get('[data-test="button"]').click());
+      cy.get('article:first-of-type').within(() => cy.get('h2').should('not.contain', 'Test title'));
+    });
   });
 
   // a
@@ -56,8 +80,32 @@ describe('App.js', () => {
 
   // j
   context('Send a message to bot and get a reply', ()=> {
+    const myMessage = 'Hi bot!';
 
-  })
+    beforeEach(()=>{
+      cy.get('[data-test="button"]').click();
+    });
+
+    it('should display your message to the bot', ()=> {
+      cy.get('[name="userMessage"]')
+      .type(myMessage);
+      cy.get('[type="submit"]')
+      .click();
+      cy.get('.h-64 > .bg-indigo-dark')
+      .should('contain', myMessage);
+      cy.get('.TypingIndicator')
+      .should('be.visible')
+    });
+
+    it('display a bot answer', ()=> {
+      cy.get('[name="userMessage"]')
+      .type(myMessage);
+      cy.get('[type="submit"]')
+      .click()
+      cy.get('.h-64 > .bg-white', {timeout: 10000})
+      .should('be.visible')
+    });
+  });
 });
 
 
