@@ -31,7 +31,22 @@ describe('App.js', () => {
 
   // a
   context('Change persona', ()=> {
+    it('should show default persona', ()=> {
+      cy.get('select')
+        .should('have.value', 'Zac');
+    });  
 
+    it('should change persona to Esmeralda', ()=> {
+      cy.get('select')
+      .select('Esmeralda').wait(200)
+        .should('have.value', 'Esmeralda');   
+    });  
+
+    it('should change persona to Morgana', ()=> {
+      cy.get('select')
+      .select('Morgana').wait(200)
+        .should('have.value', 'Morgana');   
+    });          
   });
 
   // J
@@ -41,7 +56,17 @@ describe('App.js', () => {
 
   // a
   context('Create comment', ()=> {
-
+    it('should create comment on page', ()=> {
+      cy.get('div.w-full:first-of-type')
+        .within(() => {
+          cy.get('#comment')
+            .type('Its awesome') 
+          cy.get('form')
+            .submit()
+          cy.get('p.text-grey-darker')
+            .should('contain', 'Its awesome');   
+        });  
+     });   
   });
 
   // j
@@ -51,7 +76,21 @@ describe('App.js', () => {
 
   // a
   context('Remove comment', ()=> {
-
+    it('should remove comment on page', ()=> {
+      cy.get('div.w-full:first-of-type')
+        .within(() => {
+          cy.get('#comment')
+            .type('Its awesome') 
+          cy.get('form')
+            .submit()
+          cy.get('p.text-grey-darker')
+            .should('contain', 'Its awesome');   
+          cy.get('button.bg-red-dark')
+            .click()
+          cy.get('p.text-grey-darker')
+            .should('not.contain', 'Its awesome');               
+        });  
+     });   
   });
 
   // j
