@@ -76,12 +76,11 @@ describe('api unit tests', ()=> {
     jest.runAllTimers();
     return pendingPromise;   
   }); 
-
 });
 
 
 describe('api integration tests', ()=> {
-  
+
   afterEach(() => {
     localStorage.clear();
   });

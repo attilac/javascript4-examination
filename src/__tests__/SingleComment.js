@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount, render } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import SingleComment from '../components/SingleComment';
 import * as api from '../api';
 

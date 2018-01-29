@@ -6,9 +6,8 @@ describe('MessageForm unit tests', ()=> {
 
   it('should focus input on mount', () => {
     const onSubmit = jest.fn();
-    const wrapper = mount(<MessageForm onSubmit={onSubmit} />);
+    mount(<MessageForm onSubmit={onSubmit} />);
     const focusedElement = document.activeElement; 
-    // console.log(focusedElement.name);
     expect(focusedElement.name).toBe('userMessage');
   });  
 
@@ -29,5 +28,4 @@ describe('MessageForm unit tests', ()=> {
     wrapper.find('form').simulate('submit');
     expect(wrapper.state().userMessage).toBe(''); 
   });      
-
 });  

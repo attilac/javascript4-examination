@@ -23,24 +23,24 @@ describe('singlepost unit tests', ()=>{
   it('should render title & content on page', ()=> {
     expect(wrapper.find('article h2').text()).toEqual('testTitle');
     expect(wrapper.find('ReactMarkdown').text()).toEqual('testContent');
-  })
+  });
 
   it('should match snapshots', ()=> {
     expect(wrapper).toMatchSnapshot();
     expect(noBtnWrapper).toMatchSnapshot();
-  })
+  });
 
   it('should console errors when sent no props', ()=> {
     let error;
     const warn = jest.spyOn(global.console, 'error').mockImplementation((e) => {
       error = e;
       return true;
-    });;
-    mount(<SinglePost />)
+    });
+
+    mount(<SinglePost />);
     expect(warn).toHaveBeenCalled();
     expect(error).toContain('Warning');
     warn.mockReset();
     warn.mockRestore();
-  })
-
+  });
 });
