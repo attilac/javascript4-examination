@@ -1,18 +1,10 @@
 import * as api from '../../api';
 
-describe('jesper api tests', ()=> {
+describe('api unit tests', ()=> {
 
   afterEach(() => {
     localStorage.clear();
   });
-
-  const mockPost = [{ 
-    id: '1', 
-    title: 'testTitle',
-    content: 'testContent',
-    author: 'testAuthor',
-    date: '2018-1-23 14:44:38'
-  }];
 
   // generateID
   it('should return a 10 char string', ()=> {
@@ -29,21 +21,11 @@ describe('jesper api tests', ()=> {
   });
 
 
-  // fetchAllPosts
-  it('should return a post from localStorage', ()=> {
-      localStorage.setItem('posts', JSON.stringify(mockPost));
-      expect(api.fetchAllPosts()).toEqual(mockPost);
-  });
-
   it('should return an empty array when no localstorage posts', ()=> {
     expect(api.fetchAllPosts()).toEqual([]);
   })
 
-  // storePostObject
-  it('should localstore a post object', ()=> {
-    api.storePostObject(mockPost);
-    expect(localStorage.getItem('posts')).toEqual(JSON.stringify(mockPost));
-  });
+
 
   // removePost
   it('should remove my post from localstorage', ()=>{
@@ -96,7 +78,31 @@ describe('jesper api tests', ()=> {
 
 });
 
-describe('api tests', ()=> {
+describe('api integration tests', ()=> {
+
+  afterEach(() => {
+    localStorage.clear();
+  });
+
+  const mockPost = [{ 
+    id: '1', 
+    title: 'testTitle',
+    content: 'testContent',
+    author: 'testAuthor',
+    date: '2018-1-23 14:44:38'
+  }];
+
+  // fetchAllPosts
+  it('should return a post from localStorage', ()=> {
+    localStorage.setItem('posts', JSON.stringify(mockPost));
+    expect(api.fetchAllPosts()).toEqual(mockPost);
+  });
+
+  // storePostObject
+  it('should localstore a post object', ()=> {
+    api.storePostObject(mockPost);
+    expect(localStorage.getItem('posts')).toEqual(JSON.stringify(mockPost));
+  });
 
   jest.useFakeTimers();
 
