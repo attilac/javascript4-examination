@@ -89,6 +89,7 @@ describe('jesper api tests', ()=> {
   });
 
   // filterComments
+  // Presentation - lade till try/cath i appkoden
   it('should throw error when called without array', ()=> {
     expect(() => api.filterComments('no array!')).toThrow();
   }) 

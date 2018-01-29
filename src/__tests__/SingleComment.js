@@ -27,10 +27,21 @@ describe('SingleComment unit tests', ()=> {
     expect(onClick).toHaveBeenCalledTimes(1);
   });  
 
-  it.skip('should console errors when no props', ()=> {
-    const warn = jest.spyOn(global.console, 'error');
+
+  // PRESENTATION?
+  /**
+   * Note: By default, jest.spyOn also calls the spied method. This is different behavior from most other test libraries. 
+   * f you want to overwrite the original function, you can use mockImplementation...
+   */
+  it('should console errors when sent no props', ()=> {
+    let error = '';
+    const warn = jest.spyOn(global.console, 'error').mockImplementation((e) => {
+      error = e;
+      return true;
+    });
     shallow(<SingleComment />)
     expect(warn).toHaveBeenCalled();
+    expect(error).toContain('Warning');
     warn.mockReset();
     warn.mockRestore();
   });

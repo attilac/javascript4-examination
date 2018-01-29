@@ -30,10 +30,15 @@ describe('singlepost unit tests', ()=>{
     expect(noBtnWrapper).toMatchSnapshot();
   })
 
-  it.skip('should console errors when no props', ()=> {
-    const warn = jest.spyOn(global.console, 'error');
+  it('should console errors when sent no props', ()=> {
+    let error;
+    const warn = jest.spyOn(global.console, 'error').mockImplementation((e) => {
+      error = e;
+      return true;
+    });;
     mount(<SinglePost />)
     expect(warn).toHaveBeenCalled();
+    expect(error).toContain('Warning');
     warn.mockReset();
     warn.mockRestore();
   })
