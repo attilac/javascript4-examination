@@ -97,9 +97,7 @@ describe('jesper api tests', ()=> {
 });
 
 describe('api tests', ()=> {
-
   jest.useFakeTimers();
-
   const responses = [
     'Hello there fellow human',
     'Nice game last night',
@@ -117,23 +115,19 @@ describe('api tests', ()=> {
 
   it('should return message', () => {
     const pendingPromise = api.botReply()
-        .then(resolved => {    
-          const { message } = resolved;
-          expect(responses).toContainEqual(message);
-        });
-
+      .then(resolved => {    
+        const { message } = resolved;
+        expect(responses).toContainEqual(message);
+      });
     jest.runAllTimers();
 
     api.botReply()
-        .then(resolved => {
-          const { message:newMessage } = resolved;
-          expect(responses).toContainEqual(newMessage);
-        });
-
+      .then(resolved => {
+        const { message:newMessage } = resolved;
+        expect(responses).toContainEqual(newMessage);
+      });
     jest.runAllTimers();
-
     return pendingPromise;   
-
   }); 
 
   it('should store persona to localStorage', () => {
@@ -143,20 +137,18 @@ describe('api tests', ()=> {
   }); 
 
   it('should return empty array of personas from localStorage', () => {
-    // console.log(api.fetchPersonas());
     expect(api.fetchPersonas()).toHaveLength(0);
   });   
 
   it('should return personas from localStorage', () => {
     const personasInLocalStorage = localStorage.getItem('personas');
     const personas = [
-       {'name': 'Zak'},
-       {'name': 'Esmeralda'}
+      {'name': 'Zak'},
+      {'name': 'Esmeralda'}
       ];
     if(!personasInLocalStorage){
       localStorage.setItem('personas', JSON.stringify(personas));
     }
     expect(api.fetchPersonas()).toHaveLength(2);
   });  
-
 });
