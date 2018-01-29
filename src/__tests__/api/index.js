@@ -146,7 +146,7 @@ describe('api tests', ()=> {
     expect(api.fetchPersonas()).toHaveLength(0);
   });   
 
-  it('shoul return personas from localStorage', () => {
+  it('should return personas from localStorage', () => {
     const personasInLocalStorage = localStorage.getItem('personas');
     const personas = [
        {'name': 'Zak'},

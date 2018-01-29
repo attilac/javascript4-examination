@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, mount, shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import App from '../components/App';
 
 describe('app unit tests', ()=> {
@@ -26,10 +26,10 @@ describe('app unit tests', ()=> {
 
   it('should render <App /> with changed Page', () => {
     const wrapper = shallow(<App />);
-    const page = "bot";
+    const botPage = "bot";
     const { currentPage:defaultPage } = wrapper.state();
     expect(defaultPage).toBe("home");
-    wrapper.setState({'currentPage': page});
+    wrapper.setState({'currentPage': botPage});
     const { currentPage } = wrapper.state();
     expect(currentPage).toBe("bot");
   });
@@ -41,12 +41,23 @@ describe('app unit tests', ()=> {
     expect(currentPersona).toBe("Zak");  
   });
 
+  // PRESENTATION
   it('should change page from home to bot', () => {
     const wrapper = mount(<App />);
     const { currentPage:defaultPage } = wrapper.state();
     expect(defaultPage).toBe("home"); 
     wrapper.instance().changePage();
     const { currentPage } = wrapper.state();
+    expect(currentPage).toBe("bot");  
+  });
+ 
+  it('should change page from home to bot onClick', () => {
+    const wrapper = mount(<App />);
+    const { currentPage:defaultPage } = wrapper.state();
+    expect(defaultPage).toBe("home"); 
+    wrapper.find('button.pin-l').simulate('click');
+    const { currentPage } = wrapper.state();
+    expect(currentPage).not.toBe("home");
     expect(currentPage).toBe("bot");  
   });
 
@@ -60,5 +71,19 @@ describe('app unit tests', ()=> {
     wrapper.instance().changePage();
     const { currentPage:changedBackPage } = wrapper.state();
     expect(changedBackPage).toBe("home");    
+  });
+
+  it('should change page from bot to home onClick', () => {
+    const wrapper = mount(<App />);
+    const { currentPage:defaultPage } = wrapper.state();
+    expect(defaultPage).toBe("home"); 
+    wrapper.find('button.pin-l').simulate("click");
+    const { currentPage:changedPage } = wrapper.state();
+    expect(changedPage).not.toBe("home");
+    expect(changedPage).toBe("bot");      
+    wrapper.find('button.pin-l').simulate("click");
+    const { currentPage:changedBackPage } = wrapper.state();
+    expect(changedBackPage).not.toBe("bot");
+    expect(changedBackPage).toBe("home");  
   });
 });
