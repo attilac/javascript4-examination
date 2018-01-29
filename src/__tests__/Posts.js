@@ -25,7 +25,7 @@ afterEach(() => {
   localStorage.clear();
 });
 
-it('Should fetch post as state on mount', ()=> {
+it('should fetch post as state on mount', ()=> {
   const wrapper = mount(<Posts currentPersona="testAuthor" /> );
   expect(wrapper.state().posts[0].title).toEqual('testTitle');
 })
