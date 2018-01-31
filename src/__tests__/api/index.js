@@ -23,7 +23,7 @@ describe('api unit tests', ()=> {
     'Spain is nice in the autumn'
   ]; 
 
-  // generateID
+  // EXEMPEL 2. Unit-test. Testar generateId isolerat.
   it('should return a 10 char string', ()=> {
     expect(typeof api.generateID()).toEqual('string');
     expect(api.generateID()).toHaveLength(10);

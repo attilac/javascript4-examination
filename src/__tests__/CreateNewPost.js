@@ -20,6 +20,7 @@ describe('input onchange tests', ()=> {
   });
 });
 
+// Exempel 3 - ett "task" som testas - olika grejer händer i localstorage o state när vi trycker på submit
 describe('input onSubmit tests', ()=>{
   const updatePostsFn = jest.fn();
   const wrapper = mount(<CreateNewPost author="testAuthor" updatePosts={updatePostsFn} />);

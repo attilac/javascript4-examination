@@ -30,11 +30,13 @@ it('should fetch post as state on mount', ()=> {
   expect(wrapper.state().posts[0].title).toEqual('testTitle');
 });
 
+// EXEMPEL 1
+// Enhetstest som automatiskt blir integrationstest. Testar 3 funktioner indirekt.
 it('should remove post from state', ()=> {
   const wrapper = mount(<Posts currentPersona="testAuthor" /> );
-  expect(wrapper.state().posts).toHaveLength(1);
+  expect(wrapper.state().posts).toHaveLength(1); // test before
   wrapper.instance().removePost('1');
-  expect(wrapper.state().posts).toHaveLength(0);
+  expect(wrapper.state().posts).toHaveLength(0); // test after
 });
 
 it('should render my post & author', () => {

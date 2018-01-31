@@ -37,6 +37,7 @@ it('should remove comment from state', ()=> {
   expect(wrapper.state().comments).toHaveLength(0);
 })
 
+// presenation
 it('should render my comment & author', ()=> {
   const wrapper = mount(<Comments postId="1" currentPersona="testAuthor" />)
   expect(wrapper.find('SingleComment div p .text-grey-darker').text()).toEqual('testComment');
