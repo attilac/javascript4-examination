@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot when called with true 1`] = `"<div class=\\"TypingIndicator bg-indigo-dark text-white font-bold px-4 h-8 rounded-full\\"><span></span><span></span><span></span></div>"`;
