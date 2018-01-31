@@ -27,7 +27,9 @@ it('should set typing from false to true', ()=> {
   expect(wrapper.state().typing).toBeTruthy();
 });
 
-// PRESENTATION
+// Presentation Attila
+// State sätts av Promise inne funktion
+
 it('should get a botreply', () => {
   jest.useFakeTimers();
   const wrapper = mount(<Bot />);

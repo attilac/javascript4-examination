@@ -41,7 +41,10 @@ describe('app unit tests', ()=> {
     expect(currentPersona).toBe("Zak");  
   });
 
-  // PRESENTATION
+  // Presentation Attila
+  // Olika sätt att göra saker på
+
+  // Använda funktion direkt
   it('should change page from home to bot', () => {
     const wrapper = mount(<App />);
     const { currentPage:defaultPage } = wrapper.state();
@@ -50,7 +53,8 @@ describe('app unit tests', ()=> {
     const { currentPage } = wrapper.state();
     expect(currentPage).toBe("bot");  
   });
- 
+
+  // Använda onClick som funktionen är kopplad till
   it('should change page from home to bot onClick', () => {
     const wrapper = mount(<App />);
     const { currentPage:defaultPage } = wrapper.state();
@@ -60,6 +64,7 @@ describe('app unit tests', ()=> {
     expect(currentPage).not.toBe("home");
     expect(currentPage).toBe("bot");  
   });
+  // -------------- //
 
   it('should change page from bot to home', () => {
     const wrapper = mount(<App />);
