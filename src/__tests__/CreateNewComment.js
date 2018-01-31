@@ -16,7 +16,7 @@ describe('CreateNewComment unit tests', ()=> {
   it('should clear state after submit', () => {
     const updateComments = jest.fn();
     const wrapper = mount(<CreateNewComment  author="Attila" postId="1" updateComments={updateComments} />);
-    wrapper.setState({comment: 'testcomment'})
+    wrapper.setState({comment: 'testcomment'});
     wrapper.find('form').simulate('submit');
     const newComment = JSON.parse(localStorage.getItem('comments'))[0].comment;
     expect(newComment).toBe('testcomment');
