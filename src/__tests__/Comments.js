@@ -37,7 +37,7 @@ it('should remove comment from state', ()=> {
   expect(wrapper.state().comments).toHaveLength(0);
 })
 
-// presenation
+// EXEMPEL 8 - osäkert sätt att få tag på rätt element
 it('should render my comment & author', ()=> {
   const wrapper = mount(<Comments postId="1" currentPersona="testAuthor" />)
   expect(wrapper.find('SingleComment div p .text-grey-darker').text()).toEqual('testComment');

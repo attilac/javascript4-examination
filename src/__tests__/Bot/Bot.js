@@ -27,7 +27,7 @@ it('should set typing from false to true', ()=> {
   expect(wrapper.state().typing).toBeTruthy();
 });
 
-// Presentation Attila
+// EXEMPEL 7
 // State sätts av Promise inne funktion
 
 it('should get a botreply', () => {

@@ -28,8 +28,8 @@ describe('SingleComment unit tests', ()=> {
   });  
 
 
-  // PRESENTATION?
   /**
+   *  EXEMPEL 6 - Spionerar på console.error och ändrar också vad console.error gör, dvs skriver inte ut i konsolen.
    * Note: By default, jest.spyOn also calls the spied method. This is different behavior from most other test libraries. 
    * f you want to overwrite the original function, you can use mockImplementation...
    */

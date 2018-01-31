@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import CreateNewComment from '../components/CreateNewComment';
 
+// EXEMPEL 4 - "task" som tesas. Allting görs från början i varje test
 describe('CreateNewComment unit tests', ()=> {
 
   it('should store comment to localStorage on submit', () => {

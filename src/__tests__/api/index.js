@@ -53,8 +53,7 @@ describe('api unit tests', ()=> {
     expect(testComment.comment).toEqual('testComment');
   });
 
-  // filterComments
-  // Presentation - lade till try/cath i appkoden
+  // EXEMPEL 5 - Unit test av filterComments. Lade till try/catch så att den throwar. 
   it('should throw error when called without array', ()=> {
     expect(() => api.filterComments('no array!')).toThrow();
   })
